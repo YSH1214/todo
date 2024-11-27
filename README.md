@@ -1,132 +1,113 @@
 
-# 👨‍👩‍👦‍👦 Rollingpaper Server 👨‍👩‍👦‍👦
+# 📝 작업 관리 애플리케이션  
 
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Language](https://img.shields.io/badge/language-JavaScript-yellow)
-![DBMS](https://img.shields.io/badge/DBMS-MariaDB-lightblue)
-![Deployment](https://img.shields.io/badge/deploy-AWS-green)
+![License Badge](https://img.shields.io/badge/license-MIT-blue)  
+![Python Badge](https://img.shields.io/badge/language-Python-green)  
+![Status Badge](https://img.shields.io/badge/status-Active-brightgreen)  
 
-한 사람을 위해 마음을 전달하는 온라인 롤링페이퍼! 👉 [https://rollingpaper.site/](https://rollingpaper.site/)
-
----
-
-## 📖 Description
-
-오프라인에 존재했던 롤링페이퍼 서비스를 온라인으로 옮겨왔습니다.  
-친구들, 동료들과 함께 링크를 공유하여 한 사람을 위한 롤링페이퍼를 만들어보세요.  
-다양한 종류의 편지지와 스티커로 화면을 꾸미고, 소중한 사람에게 뜻깊은 경험을 선물하세요!
+**간단한 CLI(명령줄 인터페이스)로 할 일을 효율적으로 관리하세요!**
 
 ---
 
-## 🐤 Demo
+## 📖 프로젝트 설명  
+이 프로젝트는 Python을 기반으로 한 **작업 관리 애플리케이션**입니다.  
+사용자는 새로운 작업을 추가하고, 목록을 확인하며, 작업을 완료 처리하거나 삭제할 수 있습니다.  
 
-(아래에는 서비스 화면을 보여주는 이미지를 추가하세요.)
-
----
-
-## ⭐ Main Features
-
-1. **정기 결제 기능**  
-   - 아임포트(Iamport)를 이용한 정기 결제 기능 구현
-2. **회원가입 및 로그인**  
-   - JWT(Json Web Token) 기반 인증 구현
-3. **기타 기능**  
-   - 상품 리스트 조회 및 세부 사항 조회
-   - 마이페이지 기능 구현
+작업은 JSON 파일에 저장되어 프로그램을 종료하고 다시 실행해도 작업 데이터가 유지됩니다.  
+또한, 작업 상태(`완료`, `미완료`)를 확인할 수 있어 진행 상황을 손쉽게 추적할 수 있습니다.  
 
 ---
 
-## 💻 Getting Started
+## 🐤 데모  
 
-### Installation
+아래는 애플리케이션 실행 화면 예시입니다:  
+
+```plaintext
+작업 관리 애플리케이션
+1. 할 일 추가  
+2. 할 일 목록 보기  
+3. 할 일 완료  
+4. 할 일 삭제  
+5. 종료  
+
+원하는 작업을 선택하세요 (1~5):
+```
+
+---
+
+## ⭐ 주요 기능  
+- **할 일 추가**: 새로운 작업을 추가합니다.  
+- **할 일 목록 보기**: 등록된 작업과 완료 여부를 확인합니다.  
+- **완료 처리**: 작업 상태를 `완료`로 변경합니다.  
+- **작업 삭제**: 더 이상 필요하지 않은 작업을 삭제합니다.  
+- **데이터 영구 저장**: JSON 파일(`tasks.json`)을 사용해 작업 데이터를 저장합니다.  
+
+---
+
+## 💻 시작하기  
+
+### 설치  
+1. 이 저장소를 클론합니다:  
+   ```bash
+   git clone https://github.com/yourusername/task-manager.git
+   cd task-manager
+   ```
+
+2. Python을 설치합니다(버전 3.6 이상 권장).
+
+### 애플리케이션 실행  
+Python으로 스크립트를 실행합니다:  
 ```bash
-npm install
+python task_manager.py
 ```
 
-### Develop Mode
-```bash
-npm run dev
-```
-
-### Production
-```bash
-npm run build
-```
+### 사용 예시  
+1. 새로운 작업을 추가합니다.  
+2. 작업 목록을 확인합니다.  
+3. 작업을 완료 처리하거나 삭제합니다.  
+4. 프로그램 종료 후에도 작업 데이터는 저장됩니다.  
 
 ---
 
-## 🔧 Stack
-
-- **Language**: JavaScript
-- **Library & Framework**: Node.js
-- **Database**: AWS RDS (MariaDB)
-- **ORM**: Sequelize
-- **Deployment**: AWS EC2
+## 🔧 기술 스택  
+- **언어**: Python  
+- **파일 형식**: JSON을 사용한 데이터 저장  
 
 ---
 
-## 📂 Project Structure
+## 📂 프로젝트 구조  
 
-```
-src
-├── common
-│   ├── config
-│   ├── types
-│   └── utils
-│       ├── types
-│       └── utils
-├── controller
-├── entity
-├── infrastructure
-│   ├── express
-│   └── typeorm
-├── repository
-└── ser
+```plaintext
+task_manager/
+├── task_manager.py  # 메인 스크립트
+├── tasks.json       # 데이터 저장 파일
+└── README.md        # 프로젝트 문서
 ```
 
 ---
 
-## 🔨 Server Architecture
+## ⚒ 개발 과정  
 
-(아키텍처 다이어그램을 이미지로 첨부하세요.)
-
----
-
-## ⚒ CI/CD
-
-- **CI/CD 도구**: GitHub Actions를 활용하여 지속적 통합 및 배포 구현
-- **Workflow**:
-  1. **Feature 브랜치**: `feature` 브랜치에서 `dev`로 Pull Request를 생성 시 CI 동작
-  2. **Dev 브랜치**: `dev`에서 `master`로 Pull Request를 생성 시 CI 동작 및 운영 리소스에 자동 배포
+1. **JSON 파일 기반 데이터 저장**: 작업 데이터를 `tasks.json` 파일에 저장하고 불러옵니다.  
+2. **동적 사용자 입력 처리**: 메뉴 옵션에 따라 작업 추가, 보기, 완료 처리, 삭제 등의 기능을 제공합니다.  
+3. **에러 처리**: 잘못된 입력에 대해 적절한 오류 메시지를 출력해 사용자 경험을 향상시켰습니다.  
 
 ---
 
-## 👨‍💻 Role & Contribution
+## 👨‍💻 역할 및 기여  
 
-### Frontend (Web)
-- 관리자 페이지 (Vue.js) 개발
-- 전체 아키텍처 구성
-
-### DevOps
-- CI/CD 구축 (Docker, GitHub Actions)
-- 서버 모니터링
-
-### 기타
-- 전체 개발 일정 및 이슈 관리
+- **개발자**: [Your Name]  
+    - CLI 기반 작업 관리 애플리케이션 설계 및 구현.  
+    - JSON을 이용한 데이터 영구 저장 구현.  
+    - 직관적인 메뉴 옵션 및 사용자 인터페이스 구성.  
 
 ---
 
-## 👨‍👩‍👧‍👦 Developer
+## 👨‍👩‍👧‍👦 개발자  
 
-| 이름   | 역할              | 주요 기여 사항                          |
-|--------|-------------------|------------------------------------------|
-| 홍길동 | Backend Developer | API 설계 및 데이터베이스 구축            |
-| 김철수 | Frontend Developer| 관리자 페이지 및 UI 컴포넌트 구현        |
-| 이영희 | DevOps Engineer   | CI/CD 파이프라인 구축 및 배포 관리       |
+- [Your Name](https://github.com/yourusername)  
 
 ---
 
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+이 프로젝트는 Python과 JSON 데이터 관리를 학습하는 초보자 또는 간단한 오프라인 작업 관리 도구를 찾는 사용자에게 적합합니다. 🚀  
 
