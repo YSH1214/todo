@@ -1,134 +1,132 @@
 
-# 작업 관리 CLI 애플리케이션
+# 👨‍👩‍👦‍👦 Rollingpaper Server 👨‍👩‍👦‍👦
 
-이 프로젝트는 작업을 관리할 수 있는 간단한 명령줄 인터페이스(CLI) 애플리케이션입니다.  
-작업을 조회하고, 완료 처리하며, 삭제할 수 있는 기능을 제공합니다.
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Language](https://img.shields.io/badge/language-JavaScript-yellow)
+![DBMS](https://img.shields.io/badge/DBMS-MariaDB-lightblue)
+![Deployment](https://img.shields.io/badge/deploy-AWS-green)
 
----
-
-## 주요 기능
-
-1. **작업 조회**  
-   - 현재 등록된 모든 작업과 상태(완료/미완료)를 확인할 수 있습니다.
-2. **작업 완료**  
-   - 선택한 작업을 완료 상태로 변경합니다.
-3. **작업 삭제**  
-   - 선택한 작업을 삭제합니다.
+한 사람을 위해 마음을 전달하는 온라인 롤링페이퍼! 👉 [https://rollingpaper.site/](https://rollingpaper.site/)
 
 ---
 
-## 동작 방식
+## 📖 Description
 
-### 1. 작업 조회
-현재 등록된 작업을 번호와 상태와 함께 출력합니다.  
-만약 등록된 작업이 없다면 메시지를 출력합니다.
+오프라인에 존재했던 롤링페이퍼 서비스를 온라인으로 옮겨왔습니다.  
+친구들, 동료들과 함께 링크를 공유하여 한 사람을 위한 롤링페이퍼를 만들어보세요.  
+다양한 종류의 편지지와 스티커로 화면을 꾸미고, 소중한 사람에게 뜻깊은 경험을 선물하세요!
 
-```python
-def view_tasks():
-    tasks = load_tasks()  # 작업 목록 불러오기
-    if not tasks:
-        print("현재 등록된 작업이 없습니다.")
-    else:
-        print("작업 목록:")
-        for idx, task in enumerate(tasks, start=1):
-            status = "완료" if task['completed'] else "미완료"
-            print(f"{idx}. {task['name']} - {status}")
+---
+
+## 🐤 Demo
+
+(아래에는 서비스 화면을 보여주는 이미지를 추가하세요.)
+
+---
+
+## ⭐ Main Features
+
+1. **정기 결제 기능**  
+   - 아임포트(Iamport)를 이용한 정기 결제 기능 구현
+2. **회원가입 및 로그인**  
+   - JWT(Json Web Token) 기반 인증 구현
+3. **기타 기능**  
+   - 상품 리스트 조회 및 세부 사항 조회
+   - 마이페이지 기능 구현
+
+---
+
+## 💻 Getting Started
+
+### Installation
+```bash
+npm install
 ```
----
 
-### 2. 작업 완료 처리
-작업 번호를 입력받아 해당 작업을 완료 상태로 변경합니다.
-
-```python
-def complete_task(task_number):
-    tasks = load_tasks()
-    if 1 <= task_number <= len(tasks):
-        tasks[task_number - 1]['completed'] = True
-        save_tasks(tasks)
-        print(f"작업 '{tasks[task_number - 1]['name']}'이(가) 완료 처리되었습니다.")
-    else:
-        print("유효하지 않은 작업 번호입니다. 다시 확인해주세요.")
+### Develop Mode
+```bash
+npm run dev
 ```
----
 
-### 3. 작업 삭제
-작업 번호를 입력받아 해당 작업을 삭제합니다.
-
-```python
-def delete_task(task_number):
-    tasks = load_tasks()
-    if 1 <= task_number <= len(tasks):
-        deleted_task = tasks.pop(task_number - 1)
-        save_tasks(tasks)
-        print(f"작업 '{deleted_task['name']}'이(가) 삭제되었습니다.")
-    else:
-        print("유효하지 않은 작업 번호입니다. 다시 확인해주세요.")
+### Production
+```bash
+npm run build
 ```
 
 ---
 
-## 시작하기
+## 🔧 Stack
 
-1. 레포지토리 클론:
-    ```bash
-    git clone https://github.com/yourusername/yourrepository.git
-    cd yourrepository
-    ```
-
-2. 의존성 설치 (필요할 경우):
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. 애플리케이션 실행:
-    ```bash
-    python main.py
-    ```
+- **Language**: JavaScript
+- **Library & Framework**: Node.js
+- **Database**: AWS RDS (MariaDB)
+- **ORM**: Sequelize
+- **Deployment**: AWS EC2
 
 ---
 
-## 예제 사용 방법
+## 📂 Project Structure
 
-### 작업 조회
-```plaintext
-현재 등록된 작업이 없습니다.
 ```
-
-### 작업 추가 (예시)
-작업 추가 기능은 아래와 같이 구현 가능합니다:
-```python
-def add_task(task_name):
-    tasks = load_tasks()
-    tasks.append({'name': task_name, 'completed': False})
-    save_tasks(tasks)
-    print(f"작업 '{task_name}'이(가) 추가되었습니다.")
-```
-
-### 작업 완료 처리
-```plaintext
-작업 '청소하기'이(가) 완료 처리되었습니다.
-```
-
-### 작업 삭제
-```plaintext
-작업 '청소하기'이(가) 삭제되었습니다.
+src
+├── common
+│   ├── config
+│   ├── types
+│   └── utils
+│       ├── types
+│       └── utils
+├── controller
+├── entity
+├── infrastructure
+│   ├── express
+│   └── typeorm
+├── repository
+└── ser
 ```
 
 ---
 
-## 작동 영상
+## 🔨 Server Architecture
 
-![작동 데모](path/to/demo-video.gif)
-
----
-
-## 기여하기
-
-이 프로젝트에 기여하고 싶으신 분들은 환영합니다!  
-풀 리퀘스트를 생성하거나 이슈를 열어 의견을 나눠주세요.
+(아키텍처 다이어그램을 이미지로 첨부하세요.)
 
 ---
 
-## 라이선스
+## ⚒ CI/CD
 
-이 프로젝트는 MIT 라이선스를 따릅니다.
+- **CI/CD 도구**: GitHub Actions를 활용하여 지속적 통합 및 배포 구현
+- **Workflow**:
+  1. **Feature 브랜치**: `feature` 브랜치에서 `dev`로 Pull Request를 생성 시 CI 동작
+  2. **Dev 브랜치**: `dev`에서 `master`로 Pull Request를 생성 시 CI 동작 및 운영 리소스에 자동 배포
+
+---
+
+## 👨‍💻 Role & Contribution
+
+### Frontend (Web)
+- 관리자 페이지 (Vue.js) 개발
+- 전체 아키텍처 구성
+
+### DevOps
+- CI/CD 구축 (Docker, GitHub Actions)
+- 서버 모니터링
+
+### 기타
+- 전체 개발 일정 및 이슈 관리
+
+---
+
+## 👨‍👩‍👧‍👦 Developer
+
+| 이름   | 역할              | 주요 기여 사항                          |
+|--------|-------------------|------------------------------------------|
+| 홍길동 | Backend Developer | API 설계 및 데이터베이스 구축            |
+| 김철수 | Frontend Developer| 관리자 페이지 및 UI 컴포넌트 구현        |
+| 이영희 | DevOps Engineer   | CI/CD 파이프라인 구축 및 배포 관리       |
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
