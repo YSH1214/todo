@@ -19,7 +19,7 @@ def add_task(task_name): #할 일 추가 함수
     tasks.append(task)
     save_task(tasks)
 
-def view_task():#할 일 목록보기
+def view_task():#할 일 목록보기, merge 진행
     tasks = load_task() # 파일이 있는 경우 안에 내용물이 tasks에 들어가고 없으면 빈 리스트가 들어감
     if not tasks: #tasks는 if문을 만나면 결과는 ?? 
         print("현재 등록된 작업이 없습니다.")
