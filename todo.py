@@ -29,9 +29,15 @@ def view_task():#할 일 목록보기, merge 진행
         #enumerate() -> i = 1, task = {"name" : "파이썬 공부하기", "completed": false } 딕셔너리
             status = "완료" if task['completed'] else "미완료" # 키값을 넣으면 자동적으로 반환(출력 또는 돌려주는거) 값을 준다
             print(f"{i}. {task['name']} - {status}") # => 1. 파이썬 공부하기 - 미완료
-
+    
 def complete_task(task_number):#할 일 완료
-    pass 
+    tasks = load_task() #tasks = [{"name":"파이썬 공부하기", "completed":True}]
+    if 1 <= task_number <= len(tasks):      #3번 입력한 경우는? 너 번호 잘못 입력했어 다시 입력해
+        tasks[task_number - 1]["completed"] = True  #tasks[0]["completed"] =>{"name":"파이썬 공부하기", "completed":false}  => false
+        save_task(tasks)
+        print(f"'할 일 : {tasks[task_number-1]["name"]}'이(가) 완료 처리되었습니다.")
+    else : 
+        print("유효하지 않은 번호입니다. 다시 확인 후 입력해주세요")
 
 def delete_task(task_number):#할 일 삭제
     pass
